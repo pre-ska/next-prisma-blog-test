@@ -13,8 +13,21 @@ datasource db {
 model Post {
   id        String   @id @default(cuid())
   title     String
+  slug      String   @unique
   content   String
-  published Boolean  @default(false)
+  published Boolean? @default(false)
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+
+  @@index(slug) // add indexing by slugs column
+}
+
+model User {
+  id             String @id @default(cuid())
+  name           String
+  email          String @unique
+  hashedPassword String
+  posts          Post[]
 }
