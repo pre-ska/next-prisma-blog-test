@@ -45,7 +45,7 @@ const Posts = async () => {
         postCount || 0
       }`}</h1>
       <ul className="border-t border-b border-black/10 leading-8 py-5">
-        {(user[0].posts || []).map((post: any) => (
+        {(user?.[0]?.posts || []).map((post: any) => (
           <li key={post.id} className="flex items-center justify-between px-5">
             <Link
               className="hover:underline text-blue-600"
