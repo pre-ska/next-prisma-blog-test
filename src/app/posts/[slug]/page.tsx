@@ -9,7 +9,7 @@ import React from "react";
 //   });
 // });
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
+const PostPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   // asynchronous access of `params.slug`.
   const { slug } = await params;
 
